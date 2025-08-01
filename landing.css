@@ -1,29 +1,35 @@
 body{
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-     background: #1a1a1a;
-      color: white;
-    background-image: url('assets/ChatGPT\ Image\ Aug\ 1\,\ 2025\,\ 10_34_40\ AM.png');
-   
-    
-    background-size: cover;
+      margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+
+  background-image: url('assets/background.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: scroll;
+  background-position: top;
+  min-height: 200vh; ;
 
     
 }
 header{
-    background: #333;
+    background-color: transparent;
     color: white;
      padding: 1rem 2rem;
+     
+     
 }
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #00ffcc;
+  
 }
 .logo:hover{
 
@@ -52,5 +58,55 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
   margin-top: 2rem;
   font-size: 5.5rem;
-  color: black;
+  color: white;
+}
+.overlay-text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  text-align: center;
+  color: white;
+  
+  padding: 2rem;
+  border-radius: 1rem;
+  animation: fadeSlideUp 1.5s ease-out forwards;
+  opacity: 0; 
+  text-shadow: 0 0 10px #40dee9, 0 0 20px #00f0ff;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -30%);
+  }
+}
+
+.overlay-text h1 {
+  font-size: 6rem;
+  margin: 0;
+  animation: fadeInText 1.2s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.overlay-text p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  animation: fadeInText 1.5s ease-out 0.9s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

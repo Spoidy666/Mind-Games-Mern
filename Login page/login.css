@@ -1,11 +1,25 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f8ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.overlay {
+  position:fixed;
+  background-image: url("../assets/ChatGPT Image Aug 1, 2025, 10_34_40 AM.png");
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: -1;
 }
 
 .login-container {
@@ -15,13 +29,20 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 400px;
-  /* text-align: center; */
+  text-align: center;
 }
 
 h1 {
   color: #333;
   font-size: 1.8rem;
   margin-bottom: 1rem;
+}
+
+.p-header {
+  color: #4b5563;
+  text-align: left;
+  margin-bottom: 40px;
+  margin-top: -10px;
 }
 
 label {
@@ -53,5 +74,38 @@ button {
 }
 
 button:hover {
-  background-color: #4169e1;
+  background-color:#4169e1;
+}
+
+/* a:hover {
+  color: #555;
+} */
+
+.flex-container{
+  display:flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.or-divider .or-line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+}
+
+.or-divider .or-text {
+  font-size: 14px;
+  color: #777;
+  padding: 0 8px;
+  font-weight: 500;
 }

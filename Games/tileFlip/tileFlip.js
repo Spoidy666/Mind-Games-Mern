@@ -2,17 +2,18 @@ const totalTiles = 30;
 const tiles = document.querySelectorAll(".tile");
 let correctTiles = [];
 let clickcount = 0;
-let totalCorrectClicks=0;
-let totalIncorrectClicks=0;
-let score=0;
-let maxRounds=10;
-let currentRound=1;
+let totalCorrectClicks = 0;
+let totalIncorrectClicks = 0;
+let score = 0;
+let maxRounds = 10;
+let currentRound = 1;
 function startRound(round) {
   clickcount = 0;
   currentRound = round;
-  const numberOfTiles=1+round;
+  const numberOfTiles = 1 + round;
   correctTiles = getRandomTiles(numberOfTiles);
   tiles.forEach((tile) => {
+    tile.classList.remove("correct", "incorrect", "clicked", "active");
     const value = parseInt(tile.dataset.value);
     if (correctTiles.includes(value)) {
       tile.classList.add("correct");
@@ -25,7 +26,6 @@ function startRound(round) {
     tiles.forEach((tile) => {
       tile.classList.remove("correct");
       tile.classList.remove("incorrect");
-      tile.classList.add("active");
     });
   }, 2000);
 }
@@ -44,16 +44,17 @@ function getRandomTiles(count) {
 
 tiles.forEach((tile) => {
   tile.addEventListener("click", () => {
-    if (!tile.classList.contains("active"))return
+    if (!tile.classList.contains("active")) return;
     const value = parseInt(tile.dataset.value);
-      if (tile.classList.contains("clicked")) return;
+    if (tile.classList.contains("clicked")) return;
     if (correctTiles.includes(value)) {
       tile.classList.add("correct");
       totalCorrectClicks++;
-      document.querySelector("h3").textContent = "Score : " + (totalCorrectClicks - totalIncorrectClicks);
+      document.querySelector("h3").textContent =
+        "Score : " + (totalCorrectClicks - totalIncorrectClicks);
       clickcount++;
       tile.classList.add("active");
-       tile.classList.add("clicked");
+      tile.classList.add("clicked");
       if (clickcount === correctTiles.length) {
         setTimeout(() => {
           alert("Congratulations! You found all the correct tiles!");
@@ -68,8 +69,10 @@ tiles.forEach((tile) => {
     } else {
       tile.classList.add("incorrect");
       tile.classList.add("active");
+      tile.classList.add("clicked");
       totalIncorrectClicks++;
-      document.querySelector("h3").textContent = "Score : " + (totalCorrectClicks - totalIncorrectClicks);
+      document.querySelector("h3").textContent =
+        "Score : " + (totalCorrectClicks - totalIncorrectClicks);
     }
   });
 });

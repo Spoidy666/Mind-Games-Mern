@@ -52,7 +52,7 @@ ul li a:hover {
 }
 h1 {
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
+  
   margin-top: 2rem;
   font-size: 5.5rem;
   color: white;
@@ -118,7 +118,7 @@ h1 {
   margin-top: 600px;
   margin-left: 50%;
   border-radius: 1rem;
-  animation: fadeSlideUp 1.5s ease-out forwards;
+  animation: fadeSlideUp 1.5s ease-out 2s forwards;
   opacity: 0;
   text-shadow: 0 0 10px #40dee9, 0 0 20px #00f0ff;
 }

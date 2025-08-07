@@ -79,9 +79,40 @@ h3 {
 .tile.correct {
   background-image: url("../../assets/starTile.png");
   background-color: yellow;
+  animation: rotate 3s ease-in-out infinite;
 }
 
 .tile.incorrect {
   background-color: red !important;
   background-image: none;
+  animation: shake 0.5s ease-in-out;
+}
+@keyframes rotate {
+  0% {
+    transform: rotateY(0deg);
+   
+  }
+  100% {
+    transform: rotateY(360deg);
+    
+  }
+    
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+    
 }

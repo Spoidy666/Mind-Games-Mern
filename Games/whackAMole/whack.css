@@ -1,6 +1,7 @@
 body {
   text-align: center;
-  background: url(../../assets/fieldWhack.png);
+background-image: url("../../assets/fieldWhack.png");
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -69,7 +70,7 @@ h1 {
   font-size: 4em;
   margin-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
-  color: black;
+  color: rgb(255, 255, 255);
   margin-top: -20px;
   text-shadow: 0 0 20px #40dee9, 0 0 20px green;
 }
@@ -77,7 +78,7 @@ h2{
   font-size: 2.5em;
   text-align: right;
   padding-right: 80px;
-  color: black;
+  color: rgb(255, 255, 255);
   margin-bottom: 20px; ;
   margin-top: -20px;
   font-family: 'Courier New', Courier, monospace;
@@ -100,10 +101,31 @@ h2{
 
 .hole.active {
   background: url('../../assets/mole.png') center;
-  background-size: cover;
+background-size: cover;
+background-color: brown;
+}
+.hole.hit {
+  background: url('../../assets/mole_hit.png') center;
+background-size: cover;
 background-color: brown;
 }
 
+.hole.plant {
+  background: url('../../assets/planthit.png') center;
+  background-size: 65%;
+  background-repeat: no-repeat;
+background-color: brown;
+}
+.hole.planthit {
+  background: url('../../assets/plant.png') center;
+  background-size: 65%;
+  background-repeat: no-repeat;
+background-color: brown;
+}
+.hole.misclick{
+ 
+background-color: rgb(232, 0, 0);
+}
 
 .modal {
   position: fixed;

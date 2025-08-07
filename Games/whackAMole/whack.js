@@ -1,56 +1,72 @@
-// 1. Select all the holes and the score display
-const holes = document.querySelectorAll('.hole');
-const scoreBoard = document.getElementById('score');
-
-// 2. Variables to keep track of score and which hole is currently active
+const holes = document.querySelectorAll(".hole");
+const scoreBoard = document.getElementById("score");
 let score = 0;
 let activeHole = null;
-
-// 3. Function to get a random hole from the available 9
+let moleTimeout = null;
+let progressiveTimeout = 1000;
 function randomHole() {
   const index = Math.floor(Math.random() * holes.length);
   return holes[index];
 }
 
-// 4. Function to show the mole
 function showMole() {
-  // Remove previous mole (if any)
   if (activeHole) {
-    activeHole.classList.remove('active');
+    activeHole.classList.remove("active", "hit");
+    activeHole = null;
   }
 
-  // Select a new random hole
   const hole = randomHole();
-  hole.classList.add('active');
+  hole.classList.add("active");
   activeHole = hole;
 
-  // Hide the mole after some time (e.g., 800ms)
-  setTimeout(() => {
-    hole.classList.remove('active');
+  moleTimeout = setTimeout(() => {
+    hole.classList.remove("active");
     activeHole = null;
   }, 800);
 }
+function showPlant() {
+  const hole = randomHole();
+  if (!hole.classList.contains("active") && !hole.classList.contains("plant")) {
+    hole.classList.add("plant");
+    setTimeout(() => {
+      hole.classList.remove("plant");
+    }, 800);
+  }
+}
+setInterval(showMole, progressiveTimeout);
+setInterval(showPlant, 2500);
 
-// 5. Start showing a mole every second (1000ms)
-setInterval(showMole, 1000);
-
-// 6. Handle user clicks
-holes.forEach(hole => {
-  hole.addEventListener('click', () => {
-    // Check if the clicked hole is currently active
-    if (hole === activeHole && hole.classList.contains('active')) {
-      score++; // Increase the score
-      scoreBoard.textContent = score; // Update the score on the screen
-
-      // Optional: add "hit" effect
-      hole.style.backgroundImage = "url('../../assets/mole_hit.png')";
-      setTimeout(() => {
-        hole.style.backgroundImage = "";
-      }, 300);
-
-      // Remove the mole immediately
-      hole.classList.remove('active');
+holes.forEach((hole) => {
+  hole.addEventListener("click", () => {
+    if (hole === activeHole && hole.classList.contains("active")) {
+      score++;
+      scoreBoard.textContent = score;
+      if (progressiveTimeout >= 500) {
+        progressiveTimeout -= 50;
+  
+      }
+      hole.classList.remove("active");
+      hole.classList.add("hit");
       activeHole = null;
+      setTimeout(() => {
+        hole.classList.remove("hit");
+      }, 400);
+      clearTimeout(moleTimeout);
+    } else if (hole.classList.contains("plant")) {
+      hole.classList.add("planthit");
+      setTimeout(() => {
+        hole.classList.remove("planthit");
+      }, 400);
+      setTimeout(() => {
+        alert("You hit the plant. Final score is " + score);
+      }, 400);
+      
+      hole.classList.remove("plant");
+    } else if (!hole.classList.contains("active")) {
+      score--;
+      scoreBoard.textContent = score;
+      hole.classList.add("misclick");
+      setTimeout(() => hole.classList.remove("misclick"), 300);
     }
   });
 });

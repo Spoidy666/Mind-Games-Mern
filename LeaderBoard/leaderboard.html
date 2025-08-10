@@ -4,20 +4,12 @@
   <meta charset="UTF-8">
   <title>Leaderboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style id="theme-style">
-    :root {
-      --bg-color: #f2f8f5;
-      --text-color: #2c3e50;
-      --card-color: #ffffff;
-      --table-header: #3498db;
-      --table-header-text: white;
-      --row-even: #f9f9f9;
-    }
-
+  <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      background: url('../assets/background1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
       margin: 0;
       padding: 20px;
     }
@@ -25,15 +17,19 @@
     h1 {
       text-align: center;
       font-size: 2.5em;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      margin-bottom: 20px;
     }
 
     .leaderboard-container {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
-      background-color: var(--card-color);
+      background-color: rgba(0, 0, 0, 0.4);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
     }
 
     .controls {
@@ -44,32 +40,65 @@
       margin-bottom: 20px;
     }
 
+    label {
+      color: white;
+      font-weight: bold;
+    }
+
     select {
-      font-size: 1.2em;
-      padding: 10px;
+      font-size: 1.1em;
+      padding: 10px 15px;
       border-radius: 8px;
-      border: 1px solid #ccc;
+      border: none;
+      background-color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    select:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #2980b9, #1f6391);
+      transform: scale(1.05);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 1.2em;
+      background-color: rgba(255, 255, 255, 0.1); /* Transparent table */
+      border-radius: 10px;
+      overflow: hidden;
+      color: white;
     }
 
     th, td {
       padding: 15px;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
 
     th {
-      background-color: var(--table-header);
-      color: var(--table-header-text);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
     }
 
     tr:nth-child(even) {
-      background-color: var(--row-even);
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     @media (max-width: 600px) {
@@ -88,11 +117,11 @@
 </head>
 <body>
 
-  <h1>Leaderboard</h1>
+  <h1>🏆 Leaderboard</h1>
   <div class="leaderboard-container">
     <div class="controls">
       <div>
-        <label for="gameSelect">Select Game:</label>
+        <label for="gameSelect">🎮 Select Game:</label>
         <select id="gameSelect" onchange="loadLeaderboard()">
           <option value="global">Global</option>
           <option value="memory-tile">Memory Tile</option>
@@ -102,14 +131,8 @@
           <option value="reaction-time">Reaction Time</option>
         </select>
       </div>
-
       <div>
-        <label for="themeSelect">Theme:</label>
-        <select id="themeSelect" onchange="changeTheme()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="high-contrast">High Contrast</option>
-        </select>
+        <button onclick="loadLeaderboard()">🔄 Refresh</button>
       </div>
     </div>
 
@@ -122,7 +145,6 @@
         </tr>
       </thead>
       <tbody id="leaderboardBody">
-        <!-- JS will fill this -->
       </tbody>
     </table>
   </div>
@@ -179,39 +201,7 @@
       });
     }
 
-    function changeTheme() {
-      const theme = document.getElementById("themeSelect").value;
-      const root = document.documentElement.style;
-
-      if (theme === "light") {
-        root.setProperty('--bg-color', '#f2f8f5');
-        root.setProperty('--text-color', '#2c3e50');
-        root.setProperty('--card-color', '#ffffff');
-        root.setProperty('--table-header', '#3498db');
-        root.setProperty('--table-header-text', 'white');
-        root.setProperty('--row-even', '#f9f9f9');
-      } else if (theme === "dark") {
-        root.setProperty('--bg-color', '#1e1e1e');
-        root.setProperty('--text-color', '#f1f1f1');
-        root.setProperty('--card-color', '#2c2c2c');
-        root.setProperty('--table-header', '#444');
-        root.setProperty('--table-header-text', '#fff');
-        root.setProperty('--row-even', '#333');
-      } else if (theme === "high-contrast") {
-        root.setProperty('--bg-color', '#000000');
-        root.setProperty('--text-color', '#ffff00');
-        root.setProperty('--card-color', '#000000');
-        root.setProperty('--table-header', '#ffff00');
-        root.setProperty('--table-header-text', '#000000');
-        root.setProperty('--row-even', '#222222');
-      }
-    }
-
-    // Load default leaderboard
-    window.onload = function() {
-      loadLeaderboard();
-      changeTheme();
-    };
+    window.onload = loadLeaderboard;
   </script>
 
 </body>

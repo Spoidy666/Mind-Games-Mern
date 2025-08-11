@@ -74,21 +74,20 @@ ul li a:hover {
     transform: translate(-50%, -30%);
   }
 }
-h2{
+h2 {
   margin-left: 100px;
   margin-top: 2rem;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: white;
   z-index: 30;
   text-shadow: 0 0 10px #40dee9, 0 0 20px #00f0ff;
 }
-.overlay-text h2{
+.overlay-text h2 {
   font-size: 6rem;
   margin: 0;
   animation: fadeInText 1.2s ease-out 0.5s forwards;
   opacity: 0;
   z-index: 30;
- 
 }
 
 .overlay-text p {
@@ -254,86 +253,79 @@ h2{
 }
 
 .hero-slider {
-    position: relative;
-    display: flex;
-    width: 90%;
-    height: 70vh;
-    margin: 0 auto; 
-    margin-top: 20px;
-    z-index: 10;
+  position: relative;
+  display: flex;
+  width: 90%;
+  height: 70vh;
+  margin: 0 auto;
+  margin-top: 20px;
+  z-index: 10;
 }
 
 .hero-slider .slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-    background-position: center;
-    opacity: 0;
-    background-repeat: no-repeat;
-    background-color: rgb(27, 27, 27);
-    transition: opacity 1s ease-in-out;
-    border-radius: 40px;
-    z-index: 1;
-    pointer-events: none;
-    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-color: rgb(27, 27, 27);
+  transition: opacity 1s ease-in-out;
+  border-radius: 40px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-slider .slide.active {
-    opacity: 1;
-    z-index: 5;
-    pointer-events: auto;
+  opacity: 1;
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .hero-slider .overlay {
-    position: absolute;
-    bottom: 20%;
-    left: 5%;
-    color: white;
-    max-width: 500px;  
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 15;
-    pointer-events: auto;
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  color: white;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 15;
+  pointer-events: auto;
 }
 
 .hero-slider h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 .hero-slider p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
 }
 
-.hero-slider button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background:red;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 20; 
-    position: relative; 
-    pointer-events: auto; 
+.overlay,
+.overlay a,
+.overlay button {
+  pointer-events: auto;
 }
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #ff5722;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    z-index: 20; 
-    position: relative; 
-    pointer-events: auto; 
-    cursor: pointer; 
+button {
+  border: none;
+  font-size: 20px;
+  border-radius: 1000px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  overflow: hidden;
+  padding: 1em 2em;
+  color: white;
+ 
 }
-.btn:hover {
-    background: #e64a19;
-}
-.overlay, .overlay a, .overlay button {
-    pointer-events: auto;
+button:hover {
+  box-shadow: 40px 0 100px rgb(250, 99, 99), -40px 0 100px  rgb(250, 99, 99);
+  transform: scale(1.02);
+    transition: all 0.3s ease;
 }

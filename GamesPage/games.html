@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="games.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Games - Games</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">MindGames</div>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="games.html" class="active">Games</a></li>
+          <li><a href="../LeaderBoard/leaderboard.html">Leaderboard</a></li>
+          <li><a href="../Login page/login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero-slider">
+      <div
+        class="slide active"
+        style="background-image: url('../assets/mole.png')"
+      >
+        <h2>New Games</h2>
+        <div class="overlay">
+          <h1>Whack-a-Mole</h1>
+          <p>Test your reflexes by whacking moles before they disappear!</p>
+          <button
+            onclick="window.location.href='../Games/whackAMole/whack.html'"
+          >
+            Play Now
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="slide"
+        style="background-image: url('../assets/towerOfHanoi.png')"
+      >
+        <h2>New Games</h2>
+        <div class="overlay">
+          <h1>Tower of Hanoi</h1>
+          <p>
+            Move the disks with strategy and skill in this classic puzzle game.
+          </p>
+          <button
+            onclick="window.location.href='../Games/towerOfHanoi/towerOfHanoi.html'"
+          >
+            Play Now
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="slide"
+        style="background-image: url('../assets/tileFlip.png')"
+      >
+        <h2>New Games</h2>
+        <div class="overlay">
+          <h1>Memory Tile</h1>
+          <p>Flip and match tiles to sharpen your memory skills.</p>
+          <button
+            onclick="window.location.href='../Games/tileFlip/tileFlip.html'"
+          >
+            Play Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="h2SelectGame" style="margin-top: 50px">Available Games</h2>
+
+    <div class="select-game">
+      <div class="game-list">
+        <a href="../Games/whackAMole/whack.html">
+          <span class="game-title">Whack a Mole</span>
+          <img src="../assets/mole_hit.png" alt="Whack a Mole" />
+        </a>
+      </div>
+
+      <div class="game-list">
+        <a href="../Games/tileFlip/tileFlip.html">
+          <span class="game-title">Memory Tile</span>
+          <img src="../assets/tileFlip.png" alt="Memory Tile" />
+        </a>
+      </div>
+
+      <div class="game-list">
+        <a href="../Games/towerOfHanoi/towerOfHanoi.html">
+          <span class="game-title">Tower of Hanoi</span>
+          <img src="../assets/towerOfHanoi.png" alt="Tower of Hanoi" />
+        </a>
+      </div>
+
+      <div class="game-list">
+        <a href="../Games/numberSequence/sequence.html">
+          <span class="game-title">Number Sequence</span>
+          <img src="" alt="Number Sequence" />
+        </a>
+      </div>
+
+      <div class="game-list">
+        <a href="../Games/patternMemory/pattern.html">
+          <span class="game-title">Pattern Memory</span>
+          <img src="" alt="Pattern Memory" />
+        </a>
+      </div>
+
+      <div class="game-list">
+        <a href="../Games/wordRecall/word.html">
+          <span class="game-title">Word Recall</span>
+          <img src="../assets/wordRecall.png" alt="Word Recall" />
+        </a>
+      </div>
+    </div>
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".hero-slider .slide");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+      }
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 5000);
+    </script>
+  </body>
+</html>

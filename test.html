@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whack-a-Mole Preview</title>
+  <style>
+
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #d42830, #8a1c2c);
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: #121212;
+      display: flex;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .preview-image {
+      flex: 1.2;
+      background: url('https://i.imgur.com/0v7A99V.png') center/cover no-repeat;
+      position: relative;
+    }
+
+    .play-button {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: #e50914;
+      border: none;
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    .play-button:hover {
+      background: #b1060e;
+    }
+
+    .play-button svg {
+      fill: white;
+      width: 30px;
+      height: 30px;
+    }
+
+    .details {
+      flex: 1.8;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .game-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+    }
+
+    .rating {
+      font-size: 1.5rem;
+      color: #f5c518;
+      margin-left: auto;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 24px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #333;
+    }
+
+    .tab {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #666;
+      cursor: pointer;
+      padding-bottom: 8px;
+      border-bottom: 3px solid transparent;
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    }
+
+    .tab.active {
+      color: white;
+      border-bottom-color: #e50914;
+    }
+
+    .content {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ddd;
+      max-width: 600px;
+    }
+
+    .content strong {
+      color: white;
+    }
+
+    .related-games {
+      margin-top: 40px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .related-game {
+      flex: 1;
+      background-color: #222;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .related-game:hover {
+      transform: scale(1.05);
+    }
+
+    .related-game img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-bottom: 1px solid #333;
+    }
+
+    .related-game p {
+      margin: 10px 0;
+      color: #bbb;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 0 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="preview-image">
+      <button class="play-button" title="Play Whack-a-Mole">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+    <div class="details">
+      <div style="display:flex; align-items:center;">
+        <h1 class="game-title">Whack-a-Mole</h1>
+        <div class="rating">9.0 ★</div>
+      </div>
+      <div class="meta">2025 | Casual | 6+</div>
+
+      <div class="tabs">
+        <div class="tab active" id="overview-tab">Overview</div>
+        <div class="tab" id="rules-tab">Rules</div>
+        <div class="tab" id="benefits-tab">Why Play?</div>
+      </div>
+
+      <div class="content" id="content-area">
+        <p><strong>Whack-a-Mole</strong> is a fast-paced game where players must hit moles popping up from holes before they disappear. Improve your reaction speed and focus while having fun!</p>
+      </div>
+
+      <h3 style="margin-top:40px; font-weight:700;">Related Games</h3>
+      <div class="related-games">
+        <div class="related-game" onclick="alert('Navigate to Reaction Time Challenge')">
+          <img src="https://i.imgur.com/AQXKLCs.jpg" alt="Reaction Time Challenge" />
+          <p>Reaction Time Challenge</p>
+        </div>
+        <div class="related-game" onclick="alert('Navigate to Fast Fingers')">
+          <img src="https://i.imgur.com/B5y0p97.jpg" alt="Fast Fingers" />
+          <p>Fast Fingers</p>
+        </div>
+        <div class="related-game" onclick="alert('Navigate to Mole Mania')">
+          <img src="https://i.imgur.com/HrTdzxO.jpg" alt="Mole Mania" />
+          <p>Mole Mania</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const overviewTab = document.getElementById('overview-tab');
+    const rulesTab = document.getElementById('rules-tab');
+    const benefitsTab = document.getElementById('benefits-tab');
+    const contentArea = document.getElementById('content-area');
+
+    overviewTab.onclick = () => {
+      setActiveTab(overviewTab);
+      contentArea.innerHTML = '<p><strong>Whack-a-Mole</strong> is a fast-paced game where players must hit moles popping up from holes before they disappear. Improve your reaction speed and focus while having fun!</p>';
+    };
+
+    rulesTab.onclick = () => {
+      setActiveTab(rulesTab);
+      contentArea.innerHTML = `
+        <ul>
+          <li>Click or tap the moles as they pop up.</li>
+          <li>You earn points for every mole you hit.</li>
+          <li>If you miss a mole, you lose some time.</li>
+          <li>Try to hit as many moles as possible before time runs out.</li>
+        </ul>
+      `;
+    };
+
+    benefitsTab.onclick = () => {
+      setActiveTab(benefitsTab);
+      contentArea.innerHTML = `
+        <p>Playing Whack-a-Mole helps to:</p>
+        <ul>
+          <li>Increase your reaction time and reflexes.</li>
+          <li>Improve hand-eye coordination.</li>
+          <li>Boost concentration and focus.</li>
+          <li>Have fun while exercising your brain.</li>
+        </ul>
+      `;
+    };
+
+    function setActiveTab(activeTab) {
+      [overviewTab, rulesTab, benefitsTab].forEach(tab => {
+        tab.classList.remove('active');
+      });
+      activeTab.classList.add('active');
+    }
+  </script>
+</body>
+</html>

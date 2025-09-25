@@ -62,7 +62,7 @@ ul li a:hover {
 .previewImage {
   flex: 1.2;
   position: absolute;
-  background-image: url('../../assets/mole.png');
+  background-image: url('../../assets/tileFlip.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

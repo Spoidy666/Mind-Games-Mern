@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="tileFlipPreview.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Tile Preview</title>
+</head>
+<body>
+    <header>
+    <nav>
+        <div class ="logo">
+            MindGames
+        </div>
+        
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="GamesPage/games.html">Games</a></li>
+        <li><a href="LeaderBoard/leaderboard.html">Leaderboard</a></li>
+        <li><a href="Login page/login.html">Login</a></li>
+      </ul>
+    </nav>
+    </header>
+
+    <div class="container">
+        <div class="previewImage">
+            <div class="playButton">
+                <button class="play"
+            onclick="window.location.href='tileFlip.html'"
+          >
+           ▶ Play Now
+          </button>
+            </div>
+        </div>
+
+        <div class="gameDescription">
+            <h1>Memory Tile </h1>
+        
+            <div class="tabs">
+                <input class="input" name="tabs" type="radio" id="tab-1" checked="checked"/>
+                <label class="label" for="tab-1">Info</label>
+                <div class="panel">
+                    <p>Memory Tile challenges your short-term memory. The game presents a grid of tiles that briefly reveal patterns or images. The player must remember the positions and flip the tiles to match pairs correctly. As levels progress, the patterns become more complex and the time decreases, testing memory, focus, and attention to detail. <div class="rating">Hardness level &nbsp;&nbsp;&nbsp; ★ ★ ★ ★ ★</div></p>
+                </div>
+
+                <input class="input" name="tabs" type="radio" id="tab-2"/>
+                <label class="label" for="tab-2">Rules</label>
+                <div class="panel">
+                    <p>
+                    1. Observe the tiles carefully as they briefly reveal their contents.<br>
+                    2. Click tiles to flip them and match pairs.<br>
+                    3. Matching all pairs completes the level.<br>
+                    4. Wrong matches may reduce points or add a time penalty.<br>
+                    5. The game becomes progressively harder with larger grids or shorter reveal times.
+                    </p>
+                </div>
+
+                <input class="input" name="tabs" type="radio" id="tab-3"/>
+                <label class="label" for="tab-3">Why Play</label>
+                <div class="panel">
+                    <p>This game is designed to improve memory, concentration, and pattern recognition. For elderly players, it helps maintain cognitive function. For children, it enhances focus, recall, and problem-solving skills. Overall, it’s an engaging brain exercise suitable for all ages.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

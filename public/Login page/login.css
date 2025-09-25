@@ -101,10 +101,6 @@ i {
   transform: scale(1.05);
 }
 
-/* a:hover {
-  color: #555;
-} */
-
 .flex-container{
   display:flex;
   justify-content: space-between;
@@ -132,4 +128,9 @@ i {
   color: #7f8fa6;
   padding: 0 8px;
   font-weight: 500;
+}
+
+#error {
+  font-weight: bold;
+  margin-top: 8px;
 }

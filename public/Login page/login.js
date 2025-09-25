@@ -19,8 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    if (password.length < 6) {
-        errorBox.textContent = "Password must be at least 6 characters.";
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        errorBox.textContent = "Invalid email format.";
+        errorBox.style.color = "red";
+        return;
+    }
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+        errorBox.textContent = "Password must be at least 6 characters, include uppercase, lowercase, number, and special character.";
         errorBox.style.color = "red";
         return;
     }
@@ -30,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     try {
       // Send data to backend
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,9 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (response.ok) {
         errorBox.textContent = "Login successful!";
         errorBox.style.color = "green";
-        window.location.href = "index.html";
+        localStorage.setItem("token", data.token); //for storing the token
+        window.location.href = "../../index.html";
     } else {
-        errorBox.textContent = data.message || "Invalid credentials";
+        errorBox.textContent = data.msg || "Invalid credentials";
         errorBox.style.color = "red";
     }
     } catch (err) {

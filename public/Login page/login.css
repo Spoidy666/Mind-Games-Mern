@@ -129,3 +129,8 @@ i {
   padding: 0 8px;
   font-weight: 500;
 }
+
+#error {
+  font-weight: bold;
+  margin-top: 8px;
+}

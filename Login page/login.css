@@ -101,10 +101,6 @@ i {
   transform: scale(1.05);
 }
 
-/* a:hover {
-  color: #555;
-} */
-
 .flex-container{
   display:flex;
   justify-content: space-between;

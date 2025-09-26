@@ -4,6 +4,22 @@ let score = 0;
 let activeHole = null;
 let moleTimeout = null;
 let progressiveTimeout = 1000;
+async function saveScore(score) {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch("/api/scores", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token,
+    },
+    body: JSON.stringify({ game: "WhackTheMole", score }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
 function randomHole() {
   const index = Math.floor(Math.random() * holes.length);
   return holes[index];
@@ -59,6 +75,7 @@ holes.forEach((hole) => {
       }, 400);
       setTimeout(() => {
         alert("You hit the plant. Final score is " + score);
+        saveScore(score);
       }, 400);
       
       hole.classList.remove("plant");

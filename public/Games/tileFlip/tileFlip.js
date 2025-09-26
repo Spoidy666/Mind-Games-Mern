@@ -51,7 +51,7 @@ async function saveScore(score) {
       "Content-Type": "application/json",
       "Authorization": token,
     },
-    body: JSON.stringify({ game: "Memory Tile", score }),
+    body: JSON.stringify({ game: "memoryTile", score }),
   });
 
   const data = await response.json();

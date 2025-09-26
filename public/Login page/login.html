@@ -22,7 +22,10 @@
             <input type="text" id="email" required>
 
             <label>Password</label>
-            <input type="password" id="password" required>
+            <div class="password-section">
+                <input class="form-control input-lg" id="password-field" name="password" type="password" placeholder="Enter password">
+                <span class="fa fa-eye-slash" id="togglePassword"></span>
+            </div>
 
             <button type="submit" id="loginBtn">Login</button>
 

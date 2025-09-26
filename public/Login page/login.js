@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         errorBox.textContent = "Login successful!";
         errorBox.style.color = "green";
         localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user.name);
         window.location.href = "../../index.html";
       } else {
         errorBox.textContent = data.msg || "Invalid credentials";

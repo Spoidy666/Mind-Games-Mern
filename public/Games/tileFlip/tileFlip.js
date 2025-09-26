@@ -41,6 +41,24 @@ function getRandomTiles(count) {
 
   return selected;
 }
+async function saveScore(score) {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch("/api/scores", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token,
+    },
+    body: JSON.stringify({ game: "Memory Tile", score }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
+
+
 
 tiles.forEach((tile) => {
   tile.addEventListener("click", () => {
@@ -63,6 +81,7 @@ tiles.forEach((tile) => {
           } else {
             score = totalCorrectClicks - totalIncorrectClicks;
             alert("You have completed the game! Score is " + score);
+            saveScore(score);
           }
         }, 50);
       }

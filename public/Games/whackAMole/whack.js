@@ -1,5 +1,6 @@
 const holes = document.querySelectorAll(".hole");
 const scoreBoard = document.getElementById("score");
+const highestScore=document.getElementById("highscore");
 let score = 0;
 let activeHole = null;
 let moleTimeout = null;
@@ -19,7 +20,27 @@ async function saveScore(score) {
 
   const data = await response.json();
   console.log(data);
+
+  await getHighestScore();
+  return data;
 }
+async function getHighestScore() {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch(`/api/scores/highest/WhackTheMole`, {
+    headers: { "Authorization": token }
+  });
+  const data = await response.json();
+  console.log("Highest score:", data.highestScore);
+  highestScore.textContent = data.highestScore;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  if (token) getHighestScore();
+});
+
+
 function randomHole() {
   const index = Math.floor(Math.random() * holes.length);
   return holes[index];
@@ -51,7 +72,7 @@ function showPlant() {
 }
 setInterval(showMole, progressiveTimeout);
 setInterval(showPlant, 2500);
-
+getHighestScore();
 holes.forEach((hole) => {
   hole.addEventListener("click", () => {
     if (hole === activeHole && hole.classList.contains("active")) {

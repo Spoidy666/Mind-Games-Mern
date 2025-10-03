@@ -1,6 +1,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f0f8ff;
+  background-color: #0d1117;
+  color: #e6ecf3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,37 +10,34 @@ body {
 }
 
 .overlay {
-  position:fixed;
-  background-image: url("../assets/bg2.png");
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.3;
+  background-color: #12171f;
+  opacity: 0.85;
   z-index: -1;
 }
 
 .login-container {
-  background-color: #f0f4f8;
+  background-color: #1b1f28;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   width: 90%;
   max-width: 400px;
   text-align: center;
 }
 
 h1 {
-  color: #333f55;
+  color: #00ffcc;
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 .p-header {
-  color: #6a7c8e;
+  color: #a0a9b8;
   text-align: left;
   margin-bottom: 40px;
   margin-top: -10px;
@@ -50,16 +48,22 @@ label {
   text-align: left;
   margin: 1rem 0 0.5rem;
   font-size: 1.1rem;
-  color: #555;
+  color: #c0c9d4;
 }
+
 input {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
-  background-color: #ffffff;
-  border: 1px solid #bfcad9;
+  background-color: #2a2e37;
+  border: 1px solid #3a3f4c;
   border-radius: 6px;
   box-sizing: border-box;
+  color: #e6ecf3;
+}
+
+input::placeholder {
+  color: #7a8190;
 }
 
 button {
@@ -67,17 +71,18 @@ button {
   width: 100%;
   padding: 0.8rem;
   font-size: 1.1rem;
-  background-color: #5d8aa8;
-  color: white;
+  background-color: #00ffcc;
+  color: #0d1117;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
 button:hover {
-  background-color: #507493;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: scale(1.01);
+  background-color: #00d4a0;
+  transform: scale(1.02);
 }
 
 .social-button {
@@ -85,27 +90,27 @@ button:hover {
   width: 100%;
   padding: 0.8rem;
   font-size: 1.1rem;
-  background-color: #e6ecf3;
-  color: white;
-  border: none;
-  border-color: #c5d0db;
+  background-color: #2a2e37;
+  color: #e6ecf3;
+  border: 1px solid #3a3f4c;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s;
 }
-i {
-  color: #2d3e50;
+
+.social-button i {
+  color: #00ffcc;
 }
+
 .social-button:hover {
-  background-color: #d0dbe5; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); 
+  background-color: #3a3f4c;
   transform: scale(1.05);
 }
 
-.flex-container{
-  display:flex;
+.flex-container {
+  display: flex;
   justify-content: space-between;
-  gap: 50px;
-  align-items: center;
+  gap: 10px;
 }
 
 .or-divider {
@@ -119,41 +124,63 @@ i {
 .or-divider .or-line {
   flex: 1;
   height: 1px;
-  background-color: #c0ccd6;
+  background-color: #3a3f4c;
   border: none;
 }
 
 .or-divider .or-text {
   font-size: 14px;
-  color: #7f8fa6;
-  padding: 0 8px;
+  color: #7a8190;
   font-weight: 500;
 }
 
 #error {
   font-weight: bold;
   margin-top: 8px;
+  color: #ff4d4d;
 }
 
 .password-section {
-    position: relative;
-    display: block;
-    width: 100%;
+  position: relative;
+  display: block;
+  width: 100%;
 }
 
 .password-section input {
-    width: 100%;
-    padding-right: 40px; /* Add space for the eye icon */
-    box-sizing: border-box;
+  width: 100%;
+  padding-right: 40px;
+  box-sizing: border-box;
+  color: #e6ecf3;
 }
 
 .password-section .fa-eye,
 .password-section .fa-eye-slash {
-    position: absolute;
-    top: 50%;
-    right: 12px; /* small padding from edge */
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #2d3e50;
-    font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #00ffcc;
+  font-size: 1rem;
+}
+
+.forgot-pass {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.forgot-pass a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+.signup-text {
+  text-align: center;
+  color: #a0a9b8;
+  margin-top: 1rem;
+}
+
+.signup-text a {
+  color: #00ffcc;
+  text-decoration: none;
 }

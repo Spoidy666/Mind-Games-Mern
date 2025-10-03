@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Number Sequencing - MindGames</title>
+  <link rel="stylesheet" href="sequencing.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">MindGames</div>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../GamesPage/games.html">Games</a></li>
+        <li><a href="../../LeaderBoard/leaderboard.html">Leaderboard</a></li>
+        <li><a href="../../Login page/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>Number Sequencing</h1>
+
+  <!-- Stats row -->
+  <div id="game-stats">
+    <h3 id="level">Level: 1</h3>
+    <div class="right-stats">
+      <h3 id="score">Score: 0</h3>
+      <h3 id="timer">Time: 30s</h3>
+    </div>
+  </div>
+
+  <!-- Start & Mode Selector -->
+  <div id="preGameControls">
+    <div class="game-controls">
+      <span class="start-wrapper">
+        <button id="startBtn" class="control-btn">Start Game</button>
+      </span>
+    </div>
+
+    <div class="mode-selector">
+      <label>
+        <input type="radio" name="gameMode" value="numbers" checked>
+        Numbers
+      </label>
+      <label>
+        <input type="radio" name="gameMode" value="letters">
+        Letters
+      </label>
+    </div>
+  </div>
+
+  <div class="game-info">
+    <p id="instruction">Click START to begin. Click the items in sequential order!</p>
+  </div>
+
+  <!-- Game Grid -->
+  <div id="gameGrid" class="gameboard" aria-live="polite"></div>
+
+  <!-- Game Over Modal -->
+  <div id="gameOverModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h2>🎉 Congratulations! 🎉</h2>
+      <p id="finalScoreDisplay">Your Score: 0</p>
+      <p id="finalLevelDisplay">Level Reached: 1</p>
+      <div class="modal-buttons">
+        <button id="playAgainBtn">🔁 Play Again</button>
+        <button id="goHomeBtn">🏠 Go Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="sequencing.js"></script>
+</body>
+</html>

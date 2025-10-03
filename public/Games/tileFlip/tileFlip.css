@@ -48,6 +48,13 @@ h1 {
   font-size: 3.5rem;
   color: white;
 }
+h2{
+  color: white;
+  text-align: right;
+  margin-right: 250px;
+  font-size: 2.5rem;
+  margin-top: -50px;
+}
 h3 {
   color: white;
   text-align: right;

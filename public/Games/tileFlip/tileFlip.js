@@ -1,5 +1,7 @@
 const totalTiles = 30;
 const tiles = document.querySelectorAll(".tile");
+const scores=document.getElementById("score");
+const highestScore=document.getElementById("highscore");
 let correctTiles = [];
 let clickcount = 0;
 let totalCorrectClicks = 0;
@@ -49,14 +51,33 @@ async function saveScore(score) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": token, 
+      "Authorization": token,
     },
-    body: JSON.stringify({ game: "memoryTile", score }),
+    body: JSON.stringify({ game: "tileFlip", score }),
   });
 
   const data = await response.json();
   console.log(data);
+
+  await getHighestScore();
+  return data;
 }
+async function getHighestScore() {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch(`/api/scores/highest/tileFlip`, {
+    headers: { "Authorization": token }
+  });
+  const data = await response.json();
+  console.log("Highest score:", data.highestScore);
+  highestScore.textContent = data.highestScore;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  if (token) getHighestScore();
+});
+
 
 
 
@@ -68,8 +89,7 @@ tiles.forEach((tile) => {
     if (correctTiles.includes(value)) {
       tile.classList.add("correct");
       totalCorrectClicks++;
-      document.querySelector("h3").textContent =
-        "Score : " + (totalCorrectClicks - totalIncorrectClicks);
+      scores.textContent= (totalCorrectClicks - totalIncorrectClicks);
       clickcount++;
       tile.classList.add("active");
       tile.classList.add("clicked");
@@ -90,9 +110,9 @@ tiles.forEach((tile) => {
       tile.classList.add("active");
       tile.classList.add("clicked");
       totalIncorrectClicks++;
-      document.querySelector("h3").textContent =
-        "Score : " + (totalCorrectClicks - totalIncorrectClicks);
+  scores.textContent= (totalCorrectClicks - totalIncorrectClicks);
     }
   });
 });
 startRound(2);
+1

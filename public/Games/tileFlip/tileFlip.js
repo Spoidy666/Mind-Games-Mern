@@ -49,7 +49,7 @@ async function saveScore(score) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": token,
+      "Authorization": token, 
     },
     body: JSON.stringify({ game: "memoryTile", score }),
   });

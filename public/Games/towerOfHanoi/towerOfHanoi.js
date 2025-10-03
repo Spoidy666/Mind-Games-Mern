@@ -19,6 +19,22 @@ function createDisks() {
     rods.rod1.appendChild(disk);
   }
 }
+async function saveScore(score) {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch("/api/scores", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token, 
+    },
+    body: JSON.stringify({ game: "towerOfHanoi", score }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
 
 function updateDiskPositions(rod) {
   const disks = Array.from(rod.children);
@@ -65,6 +81,7 @@ function checkWin() {
   if (rods.rod3.children.length === numDisks) {
     setTimeout(() => {
       alert("Congratulations! You solved it in " + moveCount + " moves.");
+      saveScore(moveCount)
     }, 100);
   }
 }

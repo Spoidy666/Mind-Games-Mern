@@ -17,7 +17,7 @@ header
           <li><a href="../../index.html">Home</a></li>
           <li><a href="../../GamesPage/games.html">Games</a></li>
           <li><a href="../../LeaderBoard/leaderboard.html">Leaderboard</a></li>
-          <li><a href="../../Login page/login.html">Login</a></li>
+         <li><a id="nav-login" href="../../Login page/login.html">Login</a></li>
         </ul>
       </nav>
     </header>
@@ -31,5 +31,16 @@ header
   <div id="moves">Moves: 0</div>
 
   <script src="towerOfHanoi.js"></script>
+        <script>document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("nav-login");
+  const username = localStorage.getItem("username");
+
+  if (username) {
+    
+    loginLink.textContent = username;
+    loginLink.href = "../../Profilepage/profile.html"; 
+  }
+});
+</script>
 </body>
 </html>

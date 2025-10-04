@@ -2,7 +2,7 @@ const numDisks = 3;
 let selectedDisk = null;
 let fromRod = null;
 let moveCount = 0;
-
+const highestScore = document.getElementById("highscore");  
 const rods = {
   rod1: document.getElementById("rod1"),
   rod2: document.getElementById("rod2"),
@@ -27,14 +27,32 @@ async function saveScore(score) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": token, 
+      "Authorization": token,
     },
     body: JSON.stringify({ game: "towerOfHanoi", score }),
   });
 
   const data = await response.json();
   console.log(data);
+
+  await getHighestScore();
+  return data;
 }
+async function getHighestScore() {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch(`/api/scores/highest/towerOfHanoi`, {
+    headers: { "Authorization": token }
+  });
+  const data = await response.json();
+  console.log("Highest score:", data.highestScore);
+  highestScore.textContent = "Highscore: "+data.highestScore;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  if (token) getHighestScore();
+});
 
 function updateDiskPositions(rod) {
   const disks = Array.from(rod.children);

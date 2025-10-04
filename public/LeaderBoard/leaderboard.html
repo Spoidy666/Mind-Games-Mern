@@ -80,7 +80,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 1.2em;
-      background-color: rgba(255, 255, 255, 0.1); /* Transparent table */
+      background-color: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       overflow: hidden;
       color: white;
@@ -123,12 +123,11 @@
       <div>
         <label for="gameSelect">🎮 Select Game:</label>
         <select id="gameSelect" onchange="loadLeaderboard()">
-          <option value="global">Global</option>
-          <option value="memory-tile">Memory Tile</option>
-          <option value="word-match">Word Match</option>
-          <option value="number-sequence">Number Sequence</option>
-          <option value="find-object">Find the Object</option>
-          <option value="reaction-time">Reaction Time</option>
+          <option value="WhackTheMole">WhackTheMole </option>
+          <option value="tileFlip">Memory Tile</option>
+          <option value="towerOfHanoi">Tower of Hanoi</option>
+          <option value="card-matching">Card Matching</option>
+          <option value="sequencing">Sequencing</option>
         </select>
       </div>
       <div>
@@ -150,45 +149,18 @@
   </div>
 
   <script>
-    const data = {
-      "global": [
-        { name: "Rafi", score: 120 },
-        { name: "Irfan", score: 110 },
-        { name: "Abhishek", score: 100 }
-      ],
-      "memory-tile": [
-        { name: "Rafi", score: 60 },
-        { name: "Irfan", score: 55 },
-        { name: "Abhishek", score: 50 }
-      ],
-      "word-match": [
-        { name: "Abhishek", score: 70 },
-        { name: "Rafi", score: 65 },
-        { name: "Irfan", score: 62 }
-      ],
-      "number-sequence": [
-        { name: "Irfan", score: 90 },
-        { name: "Rafi", score: 85 },
-        { name: "Abhishek", score: 82 }
-      ],
-      "find-object": [
-        { name: "Rafi", score: 75 },
-        { name: "Abhishek", score: 70 },
-        { name: "Irfan", score: 65 }
-      ],
-      "reaction-time": [
-        { name: "Irfan", score: 50 },
-        { name: "Rafi", score: 47 },
-        { name: "Abhishek", score: 45 }
-      ]
-    };
+  async function fetchLeaderboard(game) {
+  const tbody = document.getElementById("leaderboardBody");
+  try {
+    const res = await fetch(`http://localhost:5000/api/scores/leaderboard?game=${game}`);
+    if (!res.ok) throw new Error("Failed to fetch leaderboard");
 
-    function loadLeaderboard() {
-      const game = document.getElementById("gameSelect").value;
-      const leaderboard = data[game] || [];
-      const tbody = document.getElementById("leaderboardBody");
-      tbody.innerHTML = "";
+    const leaderboard = await res.json();
+    tbody.innerHTML = "";
 
+    if (leaderboard.length === 0) {
+      tbody.innerHTML = "<tr><td colspan='3'>No scores yet</td></tr>";
+    } else {
       leaderboard.forEach((entry, index) => {
         const row = `
           <tr>
@@ -200,8 +172,20 @@
         tbody.innerHTML += row;
       });
     }
+  } catch (err) {
+    console.error(err);
+    tbody.innerHTML = "<tr><td colspan='3'>⚠ Error loading leaderboard</td></tr>";
+  }
+}
 
-    window.onload = loadLeaderboard;
+function loadLeaderboard() {
+  const gameSelect = document.getElementById("gameSelect");
+  const selectedGame = gameSelect.value;
+  fetchLeaderboard(selectedGame);
+}
+ 
+window.onload = loadLeaderboard;
+
   </script>
 
 </body>

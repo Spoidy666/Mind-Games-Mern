@@ -7,12 +7,51 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('../assets/background1.jpg') no-repeat center center fixed;
+      background-color: black;
       background-size: cover;
       color: #fff;
       margin: 0;
-      padding: 20px;
+      padding: 0px;
     }
+    header {
+  background-color: transparent;
+  color: white;
+  padding: 1rem 2rem;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ffcc;
+  transition: 800ms ease;
+}
+.logo:hover {
+  font-size: 2.5rem;
+  color: rgb(205, 53, 53);
+}
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  transition: 1050ms ease;
+}
+ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.2s, font-size 0.3s;
+}
+ul li a:hover {
+  color: #00ffcc;
+  font-size: 1.8rem;
+}
 
     h1 {
       text-align: center;
@@ -115,6 +154,20 @@
     }
   </style>
 </head>
+<header>
+    <nav>
+        <div class ="logo">
+            MindGames
+        </div>
+        
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../GamesPage/games.html">Games</a></li>
+        <li><a href="../LeaderBoard/leaderboard.html">Leaderboard</a></li>
+        <li><a id="nav-login" href="../Login page/login.html">Login</a></li>
+      </ul>
+    </nav>
+    </header>
 <body>
 
   <h1>🏆 Leaderboard</h1>
@@ -126,8 +179,8 @@
           <option value="WhackTheMole">WhackTheMole </option>
           <option value="tileFlip">Memory Tile</option>
           <option value="towerOfHanoi">Tower of Hanoi</option>
-          <option value="card-matching">Card Matching</option>
-          <option value="sequencing">Sequencing</option>
+          <option value="CardMatching">Card Matching</option>
+          <option value="Sequencing Game">Sequencing</option>
         </select>
       </div>
       <div>

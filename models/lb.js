@@ -5,12 +5,11 @@ const LeaderboardSchema = new mongoose.Schema({
     type: String, 
     required: true, 
     enum: [
-      "global",
+      "WhackTheMole",
       "memory-tile",
-      "word-match",
-      "number-sequence",
-      "find-object",
-      "reaction-time"
+      "tower-of-hanoi",
+      "card-matching",
+      "sequencing"
     ] 
   },
   name: { 

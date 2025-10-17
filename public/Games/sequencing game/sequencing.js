@@ -8,12 +8,14 @@ class SequencingGame {
     this.correctSequence = [];
     this.displayItems = [];
     this.timerId = null;
+    this.highestScore = 0;
 
-    // DOM refs
+    // DOM references
     this.dom = {
       score: document.getElementById("score"),
       level: document.getElementById("level"),
       timer: document.getElementById("timer"),
+      highscore: document.getElementById("highscore"), // 👈 make sure you have <h3 id="highscore">
       startBtn: document.getElementById("startBtn"),
       gameGrid: document.getElementById("gameGrid"),
       instruction: document.getElementById("instruction"),
@@ -28,8 +30,28 @@ class SequencingGame {
 
     this._bind();
     this._updateDisplay();
+    this._getHighestScore(); // 👈 fetch and show high score at load
   }
 
+  // ========= Fetch user’s highest score =========
+  async _getHighestScore() {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    try {
+      const response = await fetch("/api/scores/highest/Sequencing Game", {
+        headers: { "Authorization": token }
+      });
+      const data = await response.json();
+      this.highestScore = data.highestScore || 0;
+      if (this.dom.highscore)
+        this.dom.highscore.textContent = `HighScore: ${this.highestScore}`;
+    } catch (err) {
+      console.error("Failed to fetch highest score:", err);
+    }
+  }
+
+  // ========= Bind event listeners =========
   _bind() {
     this.dom.startBtn.addEventListener("click", () => this.startGame());
     this.dom.playAgainBtn.addEventListener("click", () => this._onPlayAgain());
@@ -57,9 +79,8 @@ class SequencingGame {
     this.mode = checked ? checked.value : "numbers";
   }
 
-    _prepareRound() {
-    // always make grid size a perfect square (n x n)
-    const size = Math.min(10, 3 + (this.level - 1)); // grows each level, capped at 10x10
+  _prepareRound() {
+    const size = Math.min(10, 3 + (this.level - 1));
     const gridCount = size * size;
 
     this.correctSequence = this._makeSequence(gridCount, this.mode);
@@ -176,9 +197,10 @@ class SequencingGame {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  new SequencingGame()
+  new SequencingGame();
 });
 
+// Existing save function
 async function saveScore(score) {
   const token = localStorage.getItem("token");
   if (!token) return;
@@ -195,5 +217,3 @@ async function saveScore(score) {
   const data = await response.json();
   console.log(data);
 }
-
-

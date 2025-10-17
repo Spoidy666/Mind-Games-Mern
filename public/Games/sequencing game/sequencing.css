@@ -44,15 +44,28 @@ h1 {
   color: white;
 }
 
-/* Stats row: Level left, Score+Time right */
+/* Main stats container */
 #game-stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 20px 40px;
 }
-#game-stats h3 { color: white; font-size: 1.8rem; margin: 0; }
-.right-stats { display: flex; gap: 20px; }
+
+/* Left and right sections */
+.left-stats,
+.right-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Text styling */
+#game-stats h3 {
+  color: white;
+  font-size: 1.8rem;
+  margin: 0;
+}
 
 /* Controls */
 .game-controls {

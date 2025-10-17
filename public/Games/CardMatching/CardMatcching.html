@@ -15,16 +15,19 @@
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../GamesPage/games.html">Games</a></li>
                 <li><a href="../../LeaderBoard/leaderboard.html">Leaderboard</a></li>
-                 <li><a id="nav-login" href="../../Login page/login.html">Login</a></li>
+                <li><a id="nav-login" href="../../Login page/login.html">Login</a></li>
                 
             </ul>
         </nav>
     </header>
-        <h1>Card CardMatching</h1>
+        <h1>Card Matching</h1>
     <div id="game-stats">
-        <h3><span id="score">Score: 0</span></h3>
-        <h3><span id="timer">Time: 0s</span></h3>
+    <h3 id="highscore">HighScore: 1</h3>
+    <div class="right-stats">
+      <h3 id="score">Score: 0</h3>
+      <h3 id="timer">Time: 30s</h3>
     </div>
+  </div>
 
     <div class="gameboard">
         <div class="card">
@@ -137,8 +140,8 @@
     </div>
   </div>
 
+    
     <script src="CardMatching.js"></script>
-      <script src="towerOfHanoi.js"></script>
         <script>document.addEventListener("DOMContentLoaded", () => {
   const loginLink = document.getElementById("nav-login");
   const username = localStorage.getItem("username");

@@ -173,6 +173,15 @@ h3 {
   transition: background 0.3s;
 }
 
+#game-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px;
+}
+#game-stats h3 { color: white; font-size: 1.8rem; margin: 0; }
+.right-stats { display: flex; gap: 20px; }
+
 #playAgainBtn { background: #4CAF50; color: white; }
 #playAgainBtn:hover { background: #45a049; }
 

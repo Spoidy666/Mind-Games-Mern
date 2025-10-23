@@ -63,5 +63,16 @@
             </table>
         </section>
     </main>
+    <script>
+
+  document.querySelector('a[href="logout.html"]').addEventListener('click', function (event) {
+    event.preventDefault(); 
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+
+    window.location.href = "../../index.html"; 
+  });
+</script>
+
 </body>
 </html>
